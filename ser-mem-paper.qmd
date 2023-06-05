@@ -1,0 +1,17 @@
+---
+title: "25 Years of Multilevel Models in Social Epidemiology"
+subtitle: "A Story in Three Acts"
+author: "Sam Harper"
+date: 2023-06-14
+date-format: iso
+format: html
+bibliography: mlm.bib
+csl: vancouver.csl
+---
+
+## Introduction
+
+As Pearce [@pearce1996] noted, much of the problem with 'traditional epidemiology' was its insistence that socioeconomic factors were not 'real' causes of illness.
+
+Impossible to ignore the role that the studies assessing the potential impact of income inequality on health had on the neighborhood effects literature. This was a 'big idea' per the editors of the BMJ. 
+

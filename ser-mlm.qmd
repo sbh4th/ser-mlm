@@ -1,0 +1,70 @@
+---
+title: "25 Years of Multilevel Models in Social Epidemiology"
+subtitle: "A Story in Three Acts"
+author: "Sam Harper"
+date: 2023-06-14
+date-format: iso
+format: 
+  revealjs:
+    theme: [default, custom.scss]
+    width: 1600
+    height: 900
+    slide-number: true
+    html-math-method: mathjax
+editor: visual
+bibliography: ser-mlm.bib
+csl: vancouver-author-date.csl
+filters:
+  - parse-latex
+---
+
+## {.center background-image="/images/green.jpg"}
+
+[Act 1: The Big Idea]{.act}
+
+
+
+## Introduction
+
+How do misclassification, selection bias, and unmeasured confounding create bias in parameter estimation?
+
+::: incremental
+> By assuming that all errors are random and that any modeling assumptions (such as homogeneity) are correct, all uncertainty about the effect of errors on estimates is subsumed within conventional standard deviations for the estimates (standard errors), such as those given in earlier chapters (which assume no measurement error), and any discrepancy between an observed association and the target effect may be attributed to chance alone[^1]
+
+-   Bias analysis is an attempt to quantify the potential for bias, and reduce the likelihood of mistakenly attributing effects to exposure rather than systematic error.
+:::
+
+[^1]: See @Diez-Roux:2000aa, p.362.
+
+## A skeptical view
+
+Oakes:
+
+::: {style="font-size: larger;"}
+> The recent and enthusiastic adoption of the multilevel model for neighborhood effects research appears to be a case of *statisticism*, a term used to describe an almost ritualistic appeal to significance testing and both sampling and measurement error when they are not the problem
+:::
+
+## Community interventions
+
+-   Branas
+
+## Epilogue: What have we learned?
+
+-   Heterogeneous but reliably negative associations between adverse neighborhood conditions and health.
+
+## Act I {.h2center .center background-image="/images/green.jpg"}
+
+## Overview {.h2center}
+
+::: {style="font-family: Allura; font-size: 200%;"}
+- Text
+:::
+
+## {.center background-image="/images/green.jpg"}
+
+[Act 2: Are We There Yet?]{.act}
+
+## Slide {.center}
+
+
+## References
