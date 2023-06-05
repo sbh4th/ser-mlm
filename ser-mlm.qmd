@@ -18,11 +18,9 @@ filters:
   - parse-latex
 ---
 
-## {.center background-image="/images/green.jpg"}
+##  {.center background-image="/images/green.jpg"}
 
 [Act 1: The Big Idea]{.act}
-
-
 
 ## Introduction
 
@@ -57,14 +55,13 @@ Oakes:
 ## Overview {.h2center}
 
 ::: {style="font-family: Allura; font-size: 200%;"}
-- Text
+-   Text
 :::
 
-## {.center background-image="/images/green.jpg"}
+##  {.center background-image="/images/green.jpg"}
 
 [Act 2: Are We There Yet?]{.act}
 
 ## Slide {.center}
-
 
 ## References
