@@ -15,3 +15,5 @@ As Pearce [@pearce1996] noted, much of the problem with 'traditional epidemiolog
 
 Impossible to ignore the role that the studies assessing the potential impact of income inequality on health had on the neighborhood effects literature. This was a 'big idea' per the editors of the BMJ. 
 
+Arcaya et al. [@arcaya2016] conducted an innovative systematic review of the *characteristics* of multi-level studies of neighborhood effects. They restricted to studies that used multi-level modeling
+
