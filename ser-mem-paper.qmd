@@ -11,6 +11,23 @@ csl: vancouver.csl
 
 ## Introduction
 
+At the same time as social epidemiology started to articulate a new vision for place-based and contextual effects to bring back the focus on population health, the formal literature on causal inference as applied to epidemiology was also taking shape. Foundational work by Robins, Greenland, Pearl, Hernan and others in the mid-to-late 1990s. 
+
+In discussing the disappointing results of community-based trials such as COMMIT, Syme remarks on another key idea that helped to motivate a focus on multilevel thinking in social epidemiology:
+
+> If our goal is to prevent disease and promote health, I don't think we can accomplish it by focusing exclusively on individual diseases and risk factors.
+
+Syme covers some of the same ground nearly a decade earlier in a special issue of Daedalus (1994), arguing that a focus on individual-level risk factors is unlikely to be helpful for improving disease, with some evidence from failed trials such as MRFIT to support his view. He also is highly enthusastic about the recent work of Marmot, specifically regarding the social class "gradient" that exists and can't be explained by traditional risk factors.  
+
+McKinley and Marceau (Lancet 2000):
+
+> The limitations of the risk factor paradigm12, 13 and disappointing results from community-intervention trials aimed at their reduction14, 15 have encouraged researchers to refocus “upstream”16 on the real or underlying reasons for the social patterns of disease.17
+
+
+In their historical discussion of the work of Mervyn Susser, Kaufman and Poole [@kaufman2000] identify the tension between pragmatic notions of causal inference present in much of social epidemiologic literature and the formal counterfactual models of causal inference from the statistics literature. 
+
+What about [@merlo2003]?
+
 As Pearce [@pearce1996] noted, much of the problem with 'traditional epidemiology' was its insistence that socioeconomic factors were not 'real' causes of illness.
 
 Impossible to ignore the role that the studies assessing the potential impact of income inequality on health had on the neighborhood effects literature. This was a 'big idea' per the editors of the BMJ. 

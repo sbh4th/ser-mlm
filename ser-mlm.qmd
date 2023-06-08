@@ -41,6 +41,13 @@ How do misclassification, selection bias, and unmeasured confounding create bias
 
 ## 
 
+## 
+Merlo (2003):
+
+> Traditional measures of association such as odds ratios thus provide an incomplete epidemiological basis for decision making in public health interventions. 
+
+##
+
 ::: {.r-stack}
 ![](images/cm-kaplan-2000.png)
 
