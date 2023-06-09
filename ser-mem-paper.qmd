@@ -17,11 +17,15 @@ In discussing the disappointing results of community-based trials such as COMMIT
 
 > If our goal is to prevent disease and promote health, I don't think we can accomplish it by focusing exclusively on individual diseases and risk factors.
 
-Syme covers some of the same ground nearly a decade earlier in a special issue of Daedalus (1994), arguing that a focus on individual-level risk factors is unlikely to be helpful for improving disease, with some evidence from failed trials such as MRFIT to support his view. He also is highly enthusastic about the recent work of Marmot, specifically regarding the social class "gradient" that exists and can't be explained by traditional risk factors.  
+Syme covers some of the same ground nearly a decade earlier in a special issue of Daedalus (1994), arguing that a focus on individual-level risk factors is unlikely to be helpful for improving disease, with some evidence from failed trials such as MRFIT to support his view. He also is highly enthusiastic about the recent work of Marmot, specifically regarding the social class "gradient" that exists and can't be explained by traditional risk factors.  
 
 McKinley and Marceau (Lancet 2000):
 
 > The limitations of the risk factor paradigm12, 13 and disappointing results from community-intervention trials aimed at their reduction14, 15 have encouraged researchers to refocus “upstream”16 on the real or underlying reasons for the social patterns of disease.17
+
+McKinley and Marceau (AJPH 1999):
+
+> There are signs of a shift in focus from people to place to social position, which mirrors the different levels of causality behind complex human behavior.
 
 
 In their historical discussion of the work of Mervyn Susser, Kaufman and Poole [@kaufman2000] identify the tension between pragmatic notions of causal inference present in much of social epidemiologic literature and the formal counterfactual models of causal inference from the statistics literature. 
