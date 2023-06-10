@@ -11,8 +11,9 @@ format:
     height: 900
     slide-number: true
     html-math-method: mathjax
+    embed-resources: true
 editor: visual
-bibliography: ser-mlm.bib
+bibliography: mlm.bib
 csl: vancouver-author-date.csl
 filters:
   - parse-latex
@@ -32,44 +33,66 @@ How do misclassification, selection bias, and unmeasured confounding create bias
 -   Bias analysis is an attempt to quantify the potential for bias, and reduce the likelihood of mistakenly attributing effects to exposure rather than systematic error.
 :::
 
-[^1]: See @Diez-Roux:2000aa, p.362.
+[^1]: See @diez-roux2000, p.362.
+
+## 
+::: columns
+::: {.column width="65%"}
+:::{style="font-size: larger;"}
+@diez-roux1998:
+
+> By incorporating multiple levels of determination in the study of individual outcomes, multilevel analysis allows for the effects of macro- and micro-level variables as well as their interactions
+
+:::
+
+:::
+
+::: {.column width="35%"}
+![](images/diez-roux-page-ajph1998.png)
+:::
+:::
 
 ## O'Campo 1995
-- Used GEE (concerns about autocorrelation and correct SEs) citing Zeger.
-- 'Confounding' of individual-level factors after adjustment for neighborhood-level
-- Contexual-factors can be helpful for targeting interventions (e.g., raising employment)
+
+-   Used GEE (concerns about autocorrelation and correct SEs) citing Zeger.
+-   'Confounding' of individual-level factors after adjustment for neighborhood-level
+-   Contexual-factors can be helpful for targeting interventions (e.g., raising employment)
+
+## 
+Diez-Roux (1998):
+
+> By incorporating multiple levels of determination in the study of individual outcomes, multilevel analysis allows for the effects of macro- and micro-level variables as well as their interactions,
 
 ## 
 
-## 
 Merlo (2003):
 
-> Traditional measures of association such as odds ratios thus provide an incomplete epidemiological basis for decision making in public health interventions. 
+> Traditional measures of association such as odds ratios thus provide an incomplete epidemiological basis for decision making in public health interventions.
 
-##
+## 
 
-::: {.r-stack}
+::: r-stack
 ![](images/cm-kaplan-2000.png)
 
 ![](images/cm-diderichsen-2001.png)
 :::
 
-##
+## 
+
 O'Campo (2003):
 
 > Perhaps the most pressing issue standing in the way of progress in multilevel research is lack of theory (i.e., system of hypotheses) on the mechanisms by which neighborhood environments affect health risks, protective factors, and outcomes.
 
 Sharkey (2014):
 
-> We argue that the literature on context effects should be designed to provide theory and evidence on how this process works, and on the consequences for individuals’ and families’ lives and life chances.
-
+> We argue that the literature on context effects should be designed to provide theory and evidence on how this process works, and on the consequences for individuals' and families' lives and life chances.
 
 ## Motivation
 
-- Need to discuss what MLM were helping to 'solve'
-- 'Simultaneous adjustment'
-- Back to population perspective
-- Consistency with conceptual models of social determinants
+-   Need to discuss what MLM were helping to 'solve'
+-   'Simultaneous adjustment'
+-   Back to population perspective
+-   Consistency with conceptual models of social determinants
 
 ## A skeptical view
 
@@ -83,7 +106,7 @@ Oakes:
 
 -   Branas
 
-::: {.notes}
+::: notes
 Speaker notes go here.
 :::
 
@@ -91,7 +114,7 @@ Speaker notes go here.
 
 -   Heterogeneous but reliably negative associations between adverse neighborhood conditions and health.
 
-- Strong commitment to the idea of 'neighborhood effects', but we haven't employed the right techniques to 'reveal' them.
+-   Strong commitment to the idea of 'neighborhood effects', but we haven't employed the right techniques to 'reveal' them.
 
 ## Act I {.h2center .center background-image="/images/green.jpg"}
 
