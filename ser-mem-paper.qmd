@@ -44,4 +44,8 @@ Let's go back to the early 1990s, filled with questionable musical genre mash-up
 
 These critiques found additional support in the conceptual models that were also ubiquitous and in fashion at this time. Virtually all of these conceptual models for understanding the determinants of health placed some primacy on two things. One, that the traditional, individual-centered focus on epidemiology on risk factors for disease was inadequate. Two, that the process of generating distributions of health and disease involved multiple levels, including communities, neighborhoods, municipalities, states, etc. The development, adoption, and use of multilevel statistical models held enormous promise for highlighting and demonstrating the relevance of these new conceptual models, with the aim to bring back the population perspective. 
 
+Credit for early adoption and popularization of these methods should go 
 
+A second strand of work utilizing multi-level models was focused on understanding the potential impact that the degree of economic inequality in society may have for individual health. High profile ecological studies published 
+
+Once the statistical issues had been more-or-less well described, much of the methodological discussions in the social epi literature focused on issues related to how to define neighborhoods, boundaries, how to develop, capture, or measure the relevant dimensions of context. As well as issues related whether and how to control for relevant individual-level variables. 

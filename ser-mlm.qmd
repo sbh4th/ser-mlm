@@ -1,6 +1,6 @@
 ---
-title: "25 Years of Multilevel Models in Social Epidemiology"
-subtitle: "A Story in Three Acts"
+title: "A Quarter Century of Multilevel Models in Social Epidemiology"
+subtitle: "A Short Story in Three Acts"
 author: "Sam Harper"
 date: 2023-06-14
 date-format: iso
@@ -11,7 +11,7 @@ format:
     height: 900
     slide-number: true
     html-math-method: mathjax
-    embed-resources: true
+    # embed-resources: true
 editor: visual
 bibliography: mlm.bib
 csl: vancouver-author-date.csl
@@ -19,29 +19,166 @@ filters:
   - parse-latex
 ---
 
+## Why multilevel social epidemiology?
+
+::: columns
+::: {.column width="55%"}
+
+- Place-based comparisons of health are revealing (Villermé, Farr, Graunt, Snow, DuBois, many others)
+
+- Communities inherently reflect social dynamics.
+
+- Host-Agent-Environment (physical and social).
+
+- “Population perspective”, contra biomedical individualism.
+
+:::
+
+::: {.column width="45%"}
+![John Snow's 'Grand Experiment'](images/snow-map.png)
+:::
+:::
+
+
+
+
+## {.center background-image="/images/90s-tape.png"}
+
+## {background-image="/images/90s-tape.png" background-size="200px" background-repeat="repeat"}
+
+## 
+
+::: columns
+::: {.column width="65%"}
+
+- Multilevel methods from demography (Entwistle), statistics (Wong/Mason), education (Bryk/Raudenbush).
+- Critical need for theory.
+
+:::{style="font-size: larger;"}
+
+> The development of multi-level approaches in epidemiologic research may facilitate research which elucidates the [independent and joint effects]{.red} of individual and environmental factors on health behaviors and health outcomes.
+
+:::
+
+:::
+
+::: {.column width="35%"}
+![](images/vonkorff-aje-1992.png)
+:::
+:::
+
+::: aside
+@vonkorff1992
+:::
+
+## Epidemiology has lost its way
+Social context and 'population perspective' has been forgotten.
+
+<br>
+
+
+::: {layout-nrow=2}
+![](images/krieger-title-1994.png)
+
+![](images/schwartz-title-1994.png)
+
+![](images/pearce-title-1996.png)
+
+![](images/susser-title-1996b.png)
+:::
+
+::: aside
+@krieger1994; @schwartz1994; @pearce1996; @susser1996a
+:::
+
+## Failed trials, Inadequate explanations
+
+![](images/susser-trials-1995.png)
+
+## Multilevel health determinants
+Social context a crucial element of conceptual models for 'social determinants of health'
+
+<br>
+
+::: {layout-ncol=2}
+![](images/cm-whitehead.png)
+
+![](images/cm-diderichsen-2001.png)
+:::
+
+::: aside
+@dahlgren1991; @diderichsen1998
+:::
+
 ##  {.center background-image="/images/green.jpg"}
 
 [Act 1: The Big Idea]{.act}
 
-## Introduction
+## Early studies in social epidemiology
 
-How do misclassification, selection bias, and unmeasured confounding create bias in parameter estimation?
+<br>
 
-::: incremental
-> By assuming that all errors are random and that any modeling assumptions (such as homogeneity) are correct, all uncertainty about the effect of errors on estimates is subsumed within conventional standard deviations for the estimates (standard errors), such as those given in earlier chapters (which assume no measurement error), and any discrepancy between an observed association and the target effect may be attributed to chance alone[^1]
+::: columns
+::: {.column width="25%"}
 
--   Bias analysis is an attempt to quantify the potential for bias, and reduce the likelihood of mistakenly attributing effects to exposure rather than systematic error.
+![](images/clustering.png)
 :::
 
-[^1]: See @diez-roux2000, p.362.
+::: {.column width="75%"}
+
+### Neighborhood 'effects' on violence, mortality
+- Focus on mutual adjustment
+- Clustering as nuisance
+
+### Extended to CVD, low birthweight
+- Random effects implementation
+- Multi-level EMM
+:::
+
+:::
+
+
+::: aside
+@ocampo1995; @anderson1997; @diez-roux1997; @ocampo1997
+:::
 
 ## 
+
+::: columns
+::: {.column width="65%"}
+
+- Strong theory, field measurements, sophisticated models, potential mechanisms linked to violent crime.
+
+> Multilevel analyses showed that a measure of collective efficacy yields a high between-neighborhood reliability and is negatively associated with variations in violence, when individual-level characteristics, measurement error, and prior violence are controlled. Associations of concentrated disadvantage and residential instability with violence are largely mediated by collective efficacy.
+
+:::
+
+::: {.column width="35%"}
+![](images/sampson-science-1997.png)
+
+:::
+
+:::
+
+
+::: aside
+@sampson1997
+:::
+
+
+## 
+
 ::: columns
 ::: {.column width="65%"}
 :::{style="font-size: larger;"}
-@diez-roux1998:
+
+Methods:
 
 > By incorporating multiple levels of determination in the study of individual outcomes, multilevel analysis allows for the effects of macro- and micro-level variables as well as their interactions
+
+Potential:
+
+> Multilevel analysis is one way to begin to *restore a population or societal dimension to epidemiologic research*
 
 :::
 
@@ -52,18 +189,69 @@ How do misclassification, selection bias, and unmeasured confounding create bias
 :::
 :::
 
-## O'Campo 1995
-
--   Used GEE (concerns about autocorrelation and correct SEs) citing Zeger.
--   'Confounding' of individual-level factors after adjustment for neighborhood-level
--   Contexual-factors can be helpful for targeting interventions (e.g., raising employment)
+::: aside
+@diez-roux1998
+::: 
 
 ## 
-Diez-Roux (1998):
 
-> By incorporating multiple levels of determination in the study of individual outcomes, multilevel analysis allows for the effects of macro- and micro-level variables as well as their interactions,
+::: columns
+::: {.column width="45%"}
+:::{style="font-size: larger;"}
 
-## 
+The 'Big Idea':
+
+> The big idea is that what matters in determining mortality and health in a society is less the overall wealth of that society and more how evenly wealth is distributed. 
+
+- Inequality = contextual.
+
+:::
+
+:::
+
+::: {.column width="55%"}
+![](images/bmj-big-idea-1996.png)
+:::
+:::
+
+::: aside 
+@bmj1996
+:::
+
+## State of the Evidence: 2001
+- 25 studies but only 10 used multilevel models
+- Cited >1500 times
+
+> In 23 of the 25 studies we identified, researchers reported a statistically significant association between at least one neighbourhood measure of socioeconomic status and health, controlling for individual socioeconomic status.
+
+> serve the purpose of identifying types of geographical areas where traditional public health interventions, aimed at individual risk reduction, may best be targeted
+
+::: aside 
+@pickett2001
+:::
+
+
+## Focus on variance partitioning
+
+::: {layout-nrow=2}
+![](images/merlo-2003-1.png)
+
+![](images/merlo-2003-2.png)
+
+![](images/merlo-2003-3.png)
+
+![](images/merlo-2003-4.png)
+:::
+
+::: aside 
+@merlo2003; @merlo2005; @merlo2005a; @merlo2006
+:::
+
+
+## State of the evidence: 2010
+
+
+##
 
 Merlo (2003):
 
@@ -94,13 +282,112 @@ Sharkey (2014):
 -   Back to population perspective
 -   Consistency with conceptual models of social determinants
 
-## A skeptical view
+##  {.center background-image="/images/green.jpg"}
 
-Oakes:
+[Act 2: A Crisis of Confidence?]{.act}
+
+## {.center background-image="/images/ssm-2004.png" background-size="contain"}
+
+
+## A skeptical view
 
 ::: {style="font-size: larger;"}
 > The recent and enthusiastic adoption of the multilevel model for neighborhood effects research appears to be a case of *statisticism*, a term used to describe an almost ritualistic appeal to significance testing and both sampling and measurement error when they are not the problem
+
 :::
+
+. . . 
+
+### What are the problems?
+
+- Social stratification
+- Endogeneity
+- Extrapolation
+- Spillovers
+
+::: aside
+@oakes2004
+:::
+
+## Responses
+
+##
+
+::: columns
+::: {.column width="45%"}
+![](images/mellor-hsr-2003.png){width="90%"}
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="45%"}
+![](images/subu-hsr-2003.png){width="75%"}
+:::
+:::
+
+::: aside 
+@mellor2003; @subramanian2003
+:::
+
+
+
+## Neighborhood evidence to 2007
+
+::: columns
+::: {.column width="65%"}
+- 86 multilevel papers on neighborhoods
+- 80% cross-sectional designs
+- Inconsistencies within and across studies.
+
+![](images/riva-policy-2007.png)
+
+:::
+
+::: {.column width="35%"}
+![](images/riva-page-jech2007.png)
+:::
+:::
+
+::: aside 
+@riva2007
+:::
+
+## Neighborhood effects at 20 (2014)
+
+::: columns
+::: {.column width="65%"}
+
+> “it is not clear how much we are learning, or whether such lessons are improving population health...experimental evidence of neighborhood effects is mixed, and observational studies too often report mere correlations, side-stepping critical effect identification issues. Since epidemiologists have long known that disadvantaged environments are not healthy, the utility of studies that do not face the difficult methodological challenges is questionable"
+
+:::
+
+::: {.column width="35%"}
+![](images/oakes-page-2015.png)
+:::
+:::
+
+::: aside 
+@oakes2015
+:::
+
+## @galster2017
+
+![](images/sharkey-table-2017.png){width=300}
+
+
+##  {.center background-image="/images/green.jpg"}
+
+[Act 3: A Way Forward?]{.act}
+
+## Merging of multilevel and causal
+- Sampson (2008)
+- Nandi (2010)
+- Concerns about 'overadjustment' in earlier work
+- Weighting methods to deal with observables
+
 
 ## Community interventions
 
@@ -113,6 +400,8 @@ Speaker notes go here.
 ## Epilogue: What have we learned?
 
 -   Heterogeneous but reliably negative associations between adverse neighborhood conditions and health.
+
+- Random effects still dominate
 
 -   Strong commitment to the idea of 'neighborhood effects', but we haven't employed the right techniques to 'reveal' them.
 

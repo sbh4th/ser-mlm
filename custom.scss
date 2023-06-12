@@ -1,4 +1,8 @@
 /*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: "Lucida Sans", serif !default;
+
 $theme-blue: #0000ff;
 $theme-red: #ff0000;
 $theme-gray: #cccccc;
@@ -20,6 +24,10 @@ $font-family: 'Allura', cursive;
 
 .gray {
   color: $theme-gray;
+}
+
+.white {
+  color: $theme-white;
 }
 
 .act {
