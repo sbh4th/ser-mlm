@@ -19,39 +19,14 @@ filters:
   - parse-latex
 ---
 
-## Why multilevel social epidemiology?
-
-::: columns
-::: {.column width="55%"}
-
-- Place-based comparisons of health are revealing (Villermé, Farr, Graunt, Snow, DuBois, many others)
-
-- Communities inherently reflect social dynamics.
-
-- Host-Agent-Environment (physical and social).
-
-- “Population perspective”, contra biomedical individualism.
-
-:::
-
-::: {.column width="45%"}
-![John Snow's 'Grand Experiment'](images/snow-map.png)
-:::
-:::
-
-
-
-
 ## {.center background-image="/images/90s-tape.png"}
-
-## {background-image="/images/90s-tape.png" background-size="200px" background-repeat="repeat"}
 
 ## 
 
 ::: columns
 ::: {.column width="65%"}
 
-- Multilevel methods from demography (Entwistle), statistics (Wong/Mason), education (Bryk/Raudenbush).
+- Multilevel methods developed in 1980s in demography (Entwistle), statistics (Wong/Mason), education (Bryk/Raudenbush).
 - Critical need for theory.
 
 :::{style="font-size: larger;"}
@@ -91,10 +66,6 @@ Social context and 'population perspective' has been forgotten.
 @krieger1994; @schwartz1994; @pearce1996; @susser1996a
 :::
 
-## Failed trials, Inadequate explanations
-
-![](images/susser-trials-1995.png)
-
 ## Multilevel health determinants
 Social context a crucial element of conceptual models for 'social determinants of health'
 
@@ -110,11 +81,31 @@ Social context a crucial element of conceptual models for 'social determinants o
 @dahlgren1991; @diderichsen1998
 :::
 
+## Why multilevel social epidemiology?
+
+::: columns
+::: {.column width="55%"}
+
+- Place-based comparisons of health are revealing (Villermé, Farr, Graunt, Snow, DuBois, many others)
+
+- Communities inherently reflect social dynamics.
+
+- Host-Agent-Environment (physical and social).
+
+- “Population perspective”, contra biomedical individualism.
+
+:::
+
+::: {.column width="45%"}
+![John Snow's 'Grand Experiment'](images/snow-map.png)
+:::
+:::
+
 ##  {.center background-image="/images/green.jpg"}
 
 [Act 1: The Big Idea]{.act}
 
-## Early studies in social epidemiology
+## Early influential studies in social epidemiology
 
 <br>
 
@@ -128,18 +119,18 @@ Social context a crucial element of conceptual models for 'social determinants o
 
 ### Neighborhood 'effects' on violence, mortality
 - Focus on mutual adjustment
-- Clustering as nuisance
+- Clustering addressed as nuisance
 
-### Extended to CVD, low birthweight
+### Extended to CVD, low birthweight, other outcomes
 - Random effects implementation
-- Multi-level EMM
+- Exploration of multi-level EMM
 :::
 
 :::
 
 
 ::: aside
-@ocampo1995; @anderson1997; @diez-roux1997; @ocampo1997
+US: @ocampo1995; @anderson1997; @diez-roux1997; @ocampo1997. EUR: @ecob1996; @congdon1997 
 :::
 
 ## 
@@ -162,7 +153,7 @@ Social context a crucial element of conceptual models for 'social determinants o
 
 
 ::: aside
-@sampson1997
+@sampson1997 *Science*, cited >15,000 times.
 :::
 
 
@@ -172,7 +163,7 @@ Social context a crucial element of conceptual models for 'social determinants o
 ::: {.column width="65%"}
 :::{style="font-size: larger;"}
 
-Methods:
+Focus on 'simultaneous' effects:
 
 > By incorporating multiple levels of determination in the study of individual outcomes, multilevel analysis allows for the effects of macro- and micro-level variables as well as their interactions
 
@@ -203,7 +194,7 @@ The 'Big Idea':
 
 > The big idea is that what matters in determining mortality and health in a society is less the overall wealth of that society and more how evenly wealth is distributed. 
 
-- Inequality = contextual.
+- Inequality = contextual, but how?
 
 :::
 
@@ -215,24 +206,24 @@ The 'Big Idea':
 :::
 
 ::: aside 
-@bmj1996
+@bmj1996, Papers by @kaplan1996 and @kennedy1996 used ecological designs
 :::
 
 ## State of the Evidence: 2001
-- 25 studies but only 10 used multilevel models
-- Cited >1500 times
+- 25 studies but only 10 used multilevel models, however...
 
-> In 23 of the 25 studies we identified, researchers reported a statistically significant association between at least one neighbourhood measure of socioeconomic status and health, controlling for individual socioeconomic status.
+> In 23 of the 25 studies we identified, researchers reported a *statistically significant association* between at least one neighbourhood measure of socioeconomic status and health, controlling for individual socioeconomic status.
 
-> serve the purpose of identifying types of geographical areas where traditional public health interventions, aimed at individual risk reduction, may best be targeted
+- Potential for intervention:
+
+> ...serve the purpose of identifying types of geographical areas where traditional public health interventions, aimed at individual risk reduction, may best be targeted.
 
 ::: aside 
-@pickett2001
+@pickett2001, cited >1500 times
 :::
 
 
-## Focus on variance partitioning
-
+## 
 ::: {layout-nrow=2}
 ![](images/merlo-2003-1.png)
 
@@ -242,49 +233,45 @@ The 'Big Idea':
 
 ![](images/merlo-2003-4.png)
 :::
+> Traditional measures of association such as odds ratios thus provide an incomplete epidemiological basis for decision making in public health interventions.
 
 ::: aside 
 @merlo2003; @merlo2005; @merlo2005a; @merlo2006
 :::
 
+##  {.center background-image="/images/policy-implications.png" background-size="contain"}
 
-## State of the evidence: 2010
-
-
-##
-
-Merlo (2003):
-
-> Traditional measures of association such as odds ratios thus provide an incomplete epidemiological basis for decision making in public health interventions.
-
-## 
-
-::: r-stack
-![](images/cm-kaplan-2000.png)
-
-![](images/cm-diderichsen-2001.png)
-:::
-
-## 
-
-O'Campo (2003):
-
-> Perhaps the most pressing issue standing in the way of progress in multilevel research is lack of theory (i.e., system of hypotheses) on the mechanisms by which neighborhood environments affect health risks, protective factors, and outcomes.
-
-Sharkey (2014):
-
-> We argue that the literature on context effects should be designed to provide theory and evidence on how this process works, and on the consequences for individuals' and families' lives and life chances.
-
-## Motivation
-
--   Need to discuss what MLM were helping to 'solve'
--   'Simultaneous adjustment'
--   Back to population perspective
--   Consistency with conceptual models of social determinants
 
 ##  {.center background-image="/images/green.jpg"}
 
 [Act 2: A Crisis of Confidence?]{.act}
+
+## Large-scale 'multilevel' RCT
+
+::: columns
+::: {.column width="65%"}
+
+- ~4600 families in high poverty randomized to housing vouchers.
+
+- Generated large differences in exposure to high-poverty neighborhoods.
+
+- 5-year follow-up (2003):
+  - No impacts on economic self-sufficiency of mothers.
+  - Other outcomes mixed, some positive, some negative.
+
+- Many limitations.
+
+:::
+
+::: {.column width="35%"}
+![](images/mto-interim-2003.png)
+:::
+:::
+
+::: aside 
+Interim analysis published at https://www.huduser.gov/Publications/pdf/MTOExec.pdf
+:::
+
 
 ## {.center background-image="/images/ssm-2004.png" background-size="contain"}
 
@@ -309,13 +296,41 @@ Sharkey (2014):
 @oakes2004
 :::
 
-## Responses
+## Income inequality: not so bad for health?
+
+<br>
+
+::: columns
+::: {.column width="35%"}
+- Evidence for the income inequality/health link was "slowly dissipating"
+
+- Multilevel studies inconsistent in US.
+
+- Weak evidence from Europe and Asia.
+
+- Individual-level controls matter.
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="60%"}
+![](images/mackenbach-bmj-2002.png)
+![](images/lynch-2004.png)
+:::
+:::
+
+::: aside 
+@mackenbach2002; @lynch2004
+:::
 
 ##
 
 ::: columns
 ::: {.column width="45%"}
-![](images/mellor-hsr-2003.png){width="90%"}
+Fixed effects: No.
+![](images/mellor-hsr-2003.png){width="80%"}
 
 :::
 
@@ -324,7 +339,8 @@ Sharkey (2014):
 :::
 
 ::: {.column width="45%"}
-![](images/subu-hsr-2003.png){width="75%"}
+Random effects: Yes!
+![](images/subu-hsr-2003.png){width="70%"}
 :::
 :::
 
@@ -355,7 +371,7 @@ Sharkey (2014):
 @riva2007
 :::
 
-## Neighborhood effects at 20 (2014)
+## Neighborhood effects at 20 years
 
 ::: columns
 ::: {.column width="65%"}
@@ -373,50 +389,141 @@ Sharkey (2014):
 @oakes2015
 :::
 
-## @galster2017
-
-![](images/sharkey-table-2017.png){width=300}
-
 
 ##  {.center background-image="/images/green.jpg"}
 
 [Act 3: A Way Forward?]{.act}
 
-## Merging of multilevel and causal
-- Sampson (2008)
-- Nandi (2010)
-- Concerns about 'overadjustment' in earlier work
-- Weighting methods to deal with observables
+## Merging of multilevel and causal inference
+::: columns
+::: {.column width="65%"}
 
+- Greater focus on credible study designs.
+  - Cluster RCTs
+  - Quasi-experiments
 
-## Community interventions
+- Utilizing longitudinal data to focus on *changes* in exposure
 
--   Branas
+- Weighting methods to deal with observables and post-exposure covariates
 
-::: notes
-Speaker notes go here.
+- Extensions to mediation
+
+<br>
+
+[All fit within the scope of multilevel design and analysis]{.red}
+
 :::
 
-## Epilogue: What have we learned?
-
--   Heterogeneous but reliably negative associations between adverse neighborhood conditions and health.
-
-- Random effects still dominate
-
--   Strong commitment to the idea of 'neighborhood effects', but we haven't employed the right techniques to 'reveal' them.
-
-## Act I {.h2center .center background-image="/images/green.jpg"}
-
-## Overview {.h2center}
-
-::: {style="font-family: Allura; font-size: 200%;"}
--   Text
+::: {.column width="35%"}
+![](images/hernan-book.png)
+:::
 :::
 
-##  {.center background-image="/images/green.jpg"}
+## Methods development and clarification
 
-[Act 2: Are We There Yet?]{.act}
+- Defining assumptions for causal effects of contextual exposures
 
-## Slide {.center}
+- Accounting time-varying exposures and confounding in a multilevel context
+
+- Conditional vs. marginal effects
+
+::: columns
+::: {.column width="45%"}
+![@hong2008](images/hong-2008.png)
+
+:::
+
+::: {.column width="45%"}
+![@nandi2011](images/nandi-dag.png)
+:::
+:::
+
+::: aside
+See also @cerda2010; @glymour2010; @hubbard2010; @subramanian2010
+:::
+
+## Healthy discussion of MTO design / results
+![](images/mto-debate.png)
+
+## Observational data as a neighborhood experiment
+
+::: columns
+::: {.column width="45%"}
+
+- Time-varying covariates controlled using IPTW, exposure effects estimated using MSMs.
+
+- Can replicate MTO findings.
+
+- Found significant lagged effect of living in concentrated disadvantage compared with advantage at wave 1
+
+:::
+
+::: {.column width="55%"}
+![](images/sampson-pnas-2008.png)
+:::
+:::
+
+::: aside 
+@sampson2008
+:::
+
+
+##
+
+::: columns
+::: {.column width="30%"}
+
+- Recent review of 'causal analyses' of neighborhood effects.
+
+- Much more mixed.
+
+- Evidence of selection and confounding.
+
+- Lots of heterogeneity.
+
+- Stronger evidence for children than adults.
+
+:::
+
+::: {.column width="65%"}
+![](images/sharkey-table-2017.png){width="90%"}
+:::
+:::
+
+::: aside 
+@galster2017; See also @chyn2023 for a very recent review
+:::
+
+
+## What about community RCTs?
+
+::: columns
+::: {.column width="45%"}
+![](images/south-2023.png)
+
+:::
+
+::: {.column width="45%"}
+![](images/moyer-2019.png)
+:::
+:::
+
+::: aside 
+@south2023; @moyer2019
+:::
+
+## Summary: What have we learned?
+
+<br>
+
+### Multilevel models
+- Helped to push social epi forward.
+- Perhaps short of promises.
+- More cross-sectional random effects designs unlikely to help.
+
+### Neighborhood effects
+- Heterogeneous but reliably negative associations between adverse neighborhood conditions and health.
+- Particularly for children with longer exposure. 
+- Potential underutilization of cluster-randomized interventions.
 
 ## References
