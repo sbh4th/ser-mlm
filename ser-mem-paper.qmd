@@ -92,7 +92,11 @@ Finally, our hero/villain Oakes had effectively given up on the whole project, a
 
 Which brings us now to Act 3: is there 'A Way Forward'?
 
-Recent years have actually seen a very productive 
+Recent years have actually seen a very productive merging of the huge increase in work on formal causal inference and work on multilevel models in social epidemiology. In particular, there has been much more attention focused on the key challenges to identification raised by Oakes and others. This has taken the form of stronger study designs like cluster RCTs and quasi-experiments. Moreover, an emphasis on utilizing longitudinal data to take advantage of individuals moving in and out of neighborhoods, as well as neighborhood changes themselves have tightened the focus on assumptions needed for causal inference. Finally, work on weighting methods to handle time-varying exposures and confounding have helped recent studies to deal with the problem of 'overcontrolling' for individual-level factors noted in prior work. All of these developments fit quite well within the framework of multilevel social epidemiology, though I admit are still not the most common approaches
+
+In the early 2010s work by Hong and Raudenbush in education helped to push the methods forward, and assumptions for time-varying designs were helped by directed acyclic graphs such as this one from Ari Nandi and Ichiro Kawachi. 
+
+
 
 
 
