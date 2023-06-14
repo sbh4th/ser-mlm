@@ -11,7 +11,7 @@ format:
     height: 900
     slide-number: true
     html-math-method: mathjax
-    embed-resources: true
+    # embed-resources: true
 editor: visual
 bibliography: mlm.bib
 csl: vancouver-author-date.csl
