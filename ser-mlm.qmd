@@ -2,7 +2,7 @@
 title: "A Quarter Century of Multilevel Models in Social Epidemiology"
 subtitle: "A Short Story in Three Acts"
 author: "Sam Harper"
-date: 2023-06-14
+date: 2024-11-07
 date-format: iso
 format: 
   revealjs:
@@ -14,7 +14,7 @@ format:
     # embed-resources: true
 editor: visual
 bibliography: mlm.bib
-csl: vancouver-author-date.csl
+csl: elsevier-harvard-without-titles.csl
 filters:
   - parse-latex
 ---
@@ -257,18 +257,49 @@ Interim analysis published at https://www.huduser.gov/Publications/pdf/MTOExec.p
 
 ## A skeptical view
 
+::: columns
+::: {.column width="60%"}
+
 ::: {style="font-size: larger;"}
 > The recent and enthusiastic adoption of the multilevel model for neighborhood effects research appears to be a case of *statisticism*, a term used to describe an almost ritualistic appeal to significance testing and both sampling and measurement error when they are not the problem
 :::
+:::
 
-. . .
+::: {.column width="5%"}
+:::
 
+
+::: {.column width="35%"}
+
+:::
+:::
+
+::: aside
+@oakes2004
+:::
+
+## A skeptical view
+
+::: columns
+::: {.column width="60%"}
+
+::: {style="font-size: larger;"}
+> The recent and enthusiastic adoption of the multilevel model for neighborhood effects research appears to be a case of *statisticism*, a term used to describe an almost ritualistic appeal to significance testing and both sampling and measurement error when they are not the problem
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
 ### What are the problems?
 
 -   Social stratification
 -   Endogeneity
 -   Extrapolation
 -   Spillovers
+:::
+:::
 
 ::: aside
 @oakes2004
@@ -387,29 +418,33 @@ Random effects: Yes! ![](images/subu-hsr-2003.png){width="70%"}
 
 ## Methods development and clarification
 
+::: columns
+::: {.column width="30%"}
 -   Defining assumptions for causal effects of contextual exposures
 
--   Accounting time-varying exposures and confounding in a multilevel context
+-   Time-varying exposures and confounding
 
 -   Conditional vs. marginal effects
-
-::: columns
-::: {.column width="45%"}
-![@hong2008](images/hong-2008.png)
 :::
 
-::: {.column width="45%"}
+::: {.column width="70%"}
 ![@nandi2011](images/nandi-dag.png)
 :::
 :::
 
 ::: aside
-See also @cerda2010; @glymour2010; @hubbard2010; @subramanian2010
+See also @hong2008; @cerda2010; @glymour2010; @hubbard2010; @subramanian2010
 :::
 
 ## Healthy discussion of MTO design / results
 
-![](images/mto-debate.png)
+![](images/massey-2008-ajs.png){.absolute top="10%" left=0 width=50%}
+
+![](images/ludwig-2008-ajs.png){.absolute top="15%" right=0 width=50%}
+
+::: aside
+@clampet-lundquist2008; @ludwig2008; Also @sampson2008a
+:::
 
 ## Observational data as a neighborhood experiment
 

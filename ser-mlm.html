@@ -5,12 +5,13 @@
 <script src="ser-mlm_files/libs/quarto-html/popper.min.js"></script>
 <script src="ser-mlm_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="ser-mlm_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ser-mlm_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="ser-mlm_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="ser-mlm_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.280">
+  <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content="Sam Harper">
-  <meta name="dcterms.date" content="2023-06-14">
+  <meta name="dcterms.date" content="2024-11-07">
   <title>A Quarter Century of Multilevel Models in Social Epidemiology</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,14 +27,16 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -47,9 +50,8 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
-  <link rel="stylesheet" href="ser-mlm_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+    }  </style>
+  <link rel="stylesheet" href="ser-mlm_files/libs/revealjs/dist/theme/quarto.css">
   <link href="ser-mlm_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="ser-mlm_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="ser-mlm_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -92,44 +94,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -161,7 +163,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -174,16 +176,17 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -198,7 +201,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -210,7 +213,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -222,7 +225,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -234,7 +237,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -246,7 +249,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -355,7 +358,7 @@ Sam Harper
 </div>
 </div>
 
-  <p class="date">2023-06-14</p>
+  <p class="date">2024-11-07</p>
 </section>
 <section id="section" class="slide level2 center" data-background-image="images/90s-tape.png">
 <h2></h2>
@@ -375,8 +378,7 @@ Sam Harper
 </div>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/vonkorff-aje-1992.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="vonkorff1992">Von Korff et al. (<a href="#/references" role="doc-biblioref" onclick="">1992</a>)</span></p>
@@ -385,8 +387,11 @@ Sam Harper
 <h2>Epidemiology has lost its way</h2>
 <p>Social context and ‘population perspective’ has been forgotten.</p>
 <p><br></p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-nrow="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="images/krieger-title-1994.png"></p>
 </div>
@@ -394,7 +399,7 @@ Sam Harper
 <p><img data-src="images/schwartz-title-1994.png"></p>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="images/pearce-title-1996.png"></p>
 </div>
@@ -411,8 +416,11 @@ Sam Harper
 <h2>Multilevel health determinants</h2>
 <p>Social context a crucial element of conceptual models for ‘social determinants of health’</p>
 <p><br></p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="images/cm-whitehead.png"></p>
 </div>
@@ -439,11 +447,10 @@ Sam Harper
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/snow-map.png"></p>
-<p></p><figcaption>John Snow’s ‘Grand Experiment’</figcaption><p></p>
+<figcaption>John Snow’s ‘Grand Experiment’</figcaption>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-2" class="slide level2 center" data-background-image="images/green.jpg">
 <h2></h2>
@@ -466,8 +473,7 @@ Sam Harper
 <li>Random effects implementation</li>
 <li>Exploration of multi-level EMM</li>
 </ul>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p>US: <span class="citation" data-cites="ocampo1995">O’Campo et al. (<a href="#/references" role="doc-biblioref" onclick="">1995</a>)</span>; <span class="citation" data-cites="anderson1997">Anderson et al. (<a href="#/references" role="doc-biblioref" onclick="">1997</a>)</span>; <span class="citation" data-cites="diez-roux1997">Diez-Roux et al. (<a href="#/references" role="doc-biblioref" onclick="">1997</a>)</span>; <span class="citation" data-cites="ocampo1997">O’Campo et al. (<a href="#/references" role="doc-biblioref" onclick="">1997</a>)</span>. EUR: <span class="citation" data-cites="ecob1996">Ecob (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span>; <span class="citation" data-cites="congdon1997">Congdon (<a href="#/references" role="doc-biblioref" onclick="">1997</a>)</span></p>
@@ -484,8 +490,7 @@ Sam Harper
 </blockquote>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/sampson-science-1997.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="sampson1997">Sampson et al. (<a href="#/references" role="doc-biblioref" onclick="">1997</a>)</span> <em>Science</em>, cited &gt;15,000 times.</p>
@@ -506,8 +511,7 @@ Sam Harper
 </div>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/diez-roux-page-ajph1998.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="diez-roux1998">Diez-Roux (<a href="#/references" role="doc-biblioref" onclick="">1998</a>)</span></p>
@@ -527,11 +531,10 @@ Sam Harper
 </div>
 </div><div class="column" style="width:55%;">
 <p><img data-src="images/bmj-big-idea-1996.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
-<p><span class="citation" data-cites="bmj1996">Editor’s choice (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span>, Papers by <span class="citation" data-cites="kaplan1996">Kaplan et al. (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span> and <span class="citation" data-cites="kennedy1996">Kennedy et al. (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span> used ecological designs</p>
+<p><span class="citation" data-cites="bmj1996"><span>“Editor’s choice”</span> (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span>, Papers by <span class="citation" data-cites="kaplan1996">Kaplan et al. (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span> and <span class="citation" data-cites="kennedy1996">Kennedy et al. (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span> used ecological designs</p>
 </div></aside></section>
 <section id="state-of-the-evidence-2001" class="slide level2">
 <h2>State of the Evidence: 2001</h2>
@@ -553,8 +556,11 @@ Sam Harper
 </div></aside></section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-nrow="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="images/merlo-2003-1.png"></p>
 </div>
@@ -562,7 +568,7 @@ Sam Harper
 <p><img data-src="images/merlo-2003-2.png"></p>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="images/merlo-2003-3.png"></p>
 </div>
@@ -576,7 +582,7 @@ Sam Harper
 </blockquote>
 
 <aside><div>
-<p><span class="citation" data-cites="merlo2003">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2003</a>)</span>; <span class="citation" data-cites="merlo2005">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2005b</a>)</span>; <span class="citation" data-cites="merlo2005a">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2005a</a>)</span>; <span class="citation" data-cites="merlo2006">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2006</a>)</span></p>
+<p><span class="citation" data-cites="merlo2003">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2003</a>)</span>; <span class="citation" data-cites="merlo2005">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2005a</a>)</span>; <span class="citation" data-cites="merlo2005a">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2005b</a>)</span>; <span class="citation" data-cites="merlo2006">Merlo (<a href="#/references" role="doc-biblioref" onclick="">2006</a>)</span></p>
 </div></aside></section>
 <section id="section-7" class="slide level2 center" data-background-image="images/policy-implications.png" data-background-size="contain">
 <h2></h2>
@@ -601,8 +607,7 @@ Sam Harper
 </ul>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/mto-interim-2003.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p>Interim analysis published at https://www.huduser.gov/Publications/pdf/MTOExec.pdf</p>
@@ -612,12 +617,34 @@ Sam Harper
 </section>
 <section id="a-skeptical-view" class="slide level2">
 <h2>A skeptical view</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div style="font-size: larger;">
 <blockquote>
 <p>The recent and enthusiastic adoption of the multilevel model for neighborhood effects research appears to be a case of <em>statisticism</em>, a term used to describe an almost ritualistic appeal to significance testing and both sampling and measurement error when they are not the problem</p>
 </blockquote>
 </div>
-<div class="fragment">
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:35%;">
+
+</div></div>
+
+<aside><div>
+<p><span class="citation" data-cites="oakes2004">Oakes (<a href="#/references" role="doc-biblioref" onclick="">2004</a>)</span></p>
+</div></aside></section>
+<section id="a-skeptical-view-1" class="slide level2">
+<h2>A skeptical view</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: larger;">
+<blockquote>
+<p>The recent and enthusiastic adoption of the multilevel model for neighborhood effects research appears to be a case of <em>statisticism</em>, a term used to describe an almost ritualistic appeal to significance testing and both sampling and measurement error when they are not the problem</p>
+</blockquote>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:35%;">
 <h3 id="what-are-the-problems">What are the problems?</h3>
 <ul>
 <li>Social stratification</li>
@@ -625,8 +652,8 @@ Sam Harper
 <li>Extrapolation</li>
 <li>Spillovers</li>
 </ul>
+</div></div>
 
-</div>
 <aside><div>
 <p><span class="citation" data-cites="oakes2004">Oakes (<a href="#/references" role="doc-biblioref" onclick="">2004</a>)</span></p>
 </div></aside></section>
@@ -645,8 +672,7 @@ Sam Harper
 
 </div><div class="column" style="width:60%;">
 <p><img data-src="images/mackenbach-bmj-2002.png"> <img data-src="images/lynch-2004.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="mackenbach2002">Mackenbach (<a href="#/references" role="doc-biblioref" onclick="">2002</a>)</span>; <span class="citation" data-cites="lynch2004">Lynch et al. (<a href="#/references" role="doc-biblioref" onclick="">2004</a>)</span></p>
@@ -660,8 +686,7 @@ Sam Harper
 
 </div><div class="column" style="width:45%;">
 <p>Random effects: Yes! <img data-src="images/subu-hsr-2003.png" style="width:70.0%"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="mellor2003">Mellor and Milyo (<a href="#/references" role="doc-biblioref" onclick="">2003</a>)</span>; <span class="citation" data-cites="subramanian2003">Subramanian et al. (<a href="#/references" role="doc-biblioref" onclick="">2003</a>)</span></p>
@@ -678,8 +703,7 @@ Sam Harper
 <p><img data-src="images/riva-policy-2007.png"></p>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/riva-page-jech2007.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="riva2007">Riva et al. (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></p>
@@ -693,8 +717,7 @@ Sam Harper
 </blockquote>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/oakes-page-2015.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="oakes2015">Oakes et al. (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span></p>
@@ -721,41 +744,37 @@ Sam Harper
 <p><span class="red">All fit within the scope of multilevel design and analysis</span></p>
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/hernan-book.png"></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="methods-development-and-clarification" class="slide level2">
 <h2>Methods development and clarification</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
 <ul>
 <li><p>Defining assumptions for causal effects of contextual exposures</p></li>
-<li><p>Accounting time-varying exposures and confounding in a multilevel context</p></li>
+<li><p>Time-varying exposures and confounding</p></li>
 <li><p>Conditional vs.&nbsp;marginal effects</p></li>
 </ul>
-<div class="columns">
-<div class="column" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hong-2008.png"></p>
-<p></p><figcaption><span class="citation" data-cites="hong2008">Hong and Raudenbush (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span></figcaption><p></p>
-</figure>
-</div>
-</div><div class="column" style="width:45%;">
+</div><div class="column" style="width:70%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/nandi-dag.png"></p>
-<p></p><figcaption><span class="citation" data-cites="nandi2011">Nandi and Kawachi (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span></figcaption><p></p>
+<figcaption><span class="citation" data-cites="nandi2011">Nandi and Kawachi (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span></figcaption>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 
 <aside><div>
-<p>See also <span class="citation" data-cites="cerda2010">Cerdá et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="glymour2010">Glymour et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="hubbard2010">Hubbard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="subramanian2010">Subramanian and O’Malley (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span></p>
+<p>See also <span class="citation" data-cites="hong2008">Hong and Raudenbush (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>; <span class="citation" data-cites="cerda2010">Cerdá et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="glymour2010">Glymour et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="hubbard2010">Hubbard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="subramanian2010">Subramanian and O’Malley (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span></p>
 </div></aside></section>
 <section id="healthy-discussion-of-mto-design-results" class="slide level2">
 <h2>Healthy discussion of MTO design / results</h2>
+<p><img data-src="images/massey-2008-ajs.png" class="absolute" style="top: 10%; left: 0px; width: 50%; "></p>
+<p><img data-src="images/ludwig-2008-ajs.png" class="absolute" style="top: 15%; right: 0px; width: 50%; "></p>
 
-<img data-src="images/mto-debate.png" class="r-stretch"></section>
+<aside><div>
+<p><span class="citation" data-cites="clampet-lundquist2008">Clampet‐Lundquist and Massey (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>; <span class="citation" data-cites="ludwig2008">Ludwig et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>; Also <span class="citation" data-cites="sampson2008a">Sampson (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span></p>
+</div></aside></section>
 <section id="observational-data-as-a-neighborhood-experiment" class="slide level2">
 <h2>Observational data as a neighborhood experiment</h2>
 <div class="columns">
@@ -767,8 +786,7 @@ Sam Harper
 </ul>
 </div><div class="column" style="width:55%;">
 <p><img data-src="images/sampson-pnas-2008.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="sampson2008">Sampson et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span></p>
@@ -786,8 +804,7 @@ Sam Harper
 </ul>
 </div><div class="column" style="width:65%;">
 <p><img data-src="images/sharkey-table-2017.png" style="width:90.0%"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="galster2017">Galster and Sharkey (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; See also <span class="citation" data-cites="chyn2023">Chyn and Katz (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span> for a very recent review</p>
@@ -799,8 +816,7 @@ Sam Harper
 <p><img data-src="images/south-2023.png"></p>
 </div><div class="column" style="width:45%;">
 <p><img data-src="images/moyer-2019.png"></p>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><span class="citation" data-cites="south2023">South et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>; <span class="citation" data-cites="moyer2019">Moyer et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></p>
@@ -823,132 +839,143 @@ Sam Harper
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-anderson1997" class="csl-entry" role="doc-biblioentry">
-Anderson RT, Sorlie P, Backlund E, Johnson N, Kaplan GA. <a href="https://doi.org/10.1097/00001648-199701000-00007">Mortality <span>Effects</span> of <span>Community Socioeconomic Status</span>:</a> Epidemiology. 1997 Jan;8(1):42–7.
 </div>
-<div id="ref-cerda2010" class="csl-entry" role="doc-biblioentry">
-Cerdá M, Diez-Roux AV, Tchetgen Tchetgen E, Gordon-Larsen P, Kiefe C. <a href="https://doi.org/10.1097/EDE.0b013e3181e13539">The <span>Relationship Between Neighborhood Poverty</span> and <span>Alcohol Use</span>: <span>Estimation</span> by <span>Marginal Structural Models</span></a>. Epidemiology. 2010 Jul;21(4):482–9.
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bmj1996" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/bmj.312.7037.0">1996. BMJ 312, 0–0.</a>
 </div>
-<div id="ref-chyn2023" class="csl-entry" role="doc-biblioentry">
-Chyn E, Katz LF. Neighborhoods <span>Matter</span>: <span>Assessing</span> the <span>Evidence</span> for <span>Place Effects</span>. NBER Working Paper. 2023;
+<div id="ref-anderson1997" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/00001648-199701000-00007">Anderson, R.T., Sorlie, P., Backlund, E., Johnson, N., Kaplan, G.A., 1997. Epidemiology 8, 42–47.</a>
 </div>
-<div id="ref-congdon1997" class="csl-entry" role="doc-biblioentry">
-Congdon P. <a href="https://doi.org/10.1023/A:1005937516293">Multilevel and <span>Clustering Analysis</span> of <span>Health Outcomes</span> in <span>Small Areas</span></a>. European Journal of Population. 1997;13(4):305–38.
+<div id="ref-cerda2010" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/EDE.0b013e3181e13539">Cerdá, M., Diez-Roux, A.V., Tchetgen Tchetgen, E., Gordon-Larsen, P., Kiefe, C., 2010. Epidemiology 21, 482–489.</a>
 </div>
-<div id="ref-dahlgren1991" class="csl-entry" role="doc-biblioentry">
-Dahlgren G, Whitehead M. Policies and strategies to promote social equity in health. <span>Stockholm, Sweden</span>: <span>Institute for Future</span>; 1991.
+<div id="ref-chyn2023" class="csl-entry" role="listitem">
+Chyn, E., Katz, L.F., 2023. NBER Working Paper.
 </div>
-<div id="ref-diderichsen1998" class="csl-entry" role="doc-biblioentry">
-Diderichsen F, Hallqvist J. Social inequalities in health: Some methodological considerations for the study of social position and social context. Inequality in healtha Swedish perspective Stockholm: Swedish Council for Social Research. 1998;25–39.
+<div id="ref-clampet-lundquist2008" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1086/588740">Clampet‐Lundquist, S., Massey, D.S., 2008. American Journal of Sociology 114, 107–143.</a>
 </div>
-<div id="ref-diez-roux1998" class="csl-entry" role="doc-biblioentry">
-Diez-Roux AV. <a href="https://doi.org/10.2105/AJPH.88.2.216">Bringing context back into epidemiology: Variables and fallacies in multilevel analysis.</a> American Journal of Public Health. 1998 Feb;88(2):216–22.
+<div id="ref-congdon1997" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1023/A:1005937516293">Congdon, P., 1997. European Journal of Population 13, 305–338.</a>
 </div>
-<div id="ref-diez-roux1997" class="csl-entry" role="doc-biblioentry">
-Diez-Roux AV, Nieto FJ, Muntaner C, Tyroler HA, Comstock GW, Shahar E, et al. <a href="https://doi.org/10.1093/oxfordjournals.aje.a009191">Neighborhood <span>Environments</span> and <span>Coronary Heart Disease</span>: <span>A Multilevel Analysis</span></a>. American Journal of Epidemiology. 1997 Jul;146(1):48–63.
+<div id="ref-dahlgren1991" class="csl-entry" role="listitem">
+Dahlgren, G., Whitehead, M., 1991. Policies and strategies to promote social equity in health. Institute for Future, Stockholm, Sweden.
 </div>
-<div id="ref-ecob1996" class="csl-entry" role="doc-biblioentry">
-Ecob R. A <span>Multilevel Modelling Approach</span> to <span>Examining</span> the <span>Effects</span> of <span>Area</span> of <span>Residence</span> on <span>Health</span> and <span>Functioning</span>. Journal of the Royal Statistical Society Series A (Statistics in Society) [Internet]. 1996 [cited 2023 Jun 13];159(1):61. Available from: <a href="https://www.jstor.org/stable/10.2307/2983469">https://www.jstor.org/stable/10.2307/2983469</a>
+<div id="ref-diderichsen1998" class="csl-entry" role="listitem">
+Diderichsen, F., Hallqvist, J., 1998. Inequality in health—a Swedish perspective. Stockholm: Swedish Council for Social Research 25–39.
 </div>
-<div id="ref-bmj1996" class="csl-entry" role="doc-biblioentry">
-<a href="https://doi.org/10.1136/bmj.312.7037.0">Editor’s choice</a>. BMJ. 1996 Apr;312(7037):0–0.
+<div id="ref-diez-roux1998" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.88.2.216">Diez-Roux, A.V., 1998. Am J Public Health 88, 216–222.</a>
 </div>
-<div id="ref-galster2017" class="csl-entry" role="doc-biblioentry">
-Galster G, Sharkey P. <a href="https://doi.org/10.7758/RSF.2017.3.2.01">Spatial <span>Foundations</span> of <span>Inequality</span>: <span>A Conceptual Model</span> and <span>Empirical Overview</span></a>. RSF: The Russell Sage Foundation Journal of the Social Sciences. 2017 Feb;3(2):1–33.
+<div id="ref-diez-roux1997" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1093/oxfordjournals.aje.a009191">Diez-Roux, A.V., Nieto, F.J., Muntaner, C., Tyroler, H.A., Comstock, G.W., Shahar, E., Cooper, L.S., Watson, R.L., Szklo, M., 1997. American Journal of Epidemiology 146, 48–63.</a>
 </div>
-<div id="ref-glymour2010" class="csl-entry" role="doc-biblioentry">
-Glymour MM, Mujahid M, Wu Q, White K, Tchetgen Tchetgen EJ. <a href="https://doi.org/10.1016/j.annepidem.2010.08.003">Neighborhood <span>Disadvantage</span> and <span>Self-Assessed Health</span>, <span>Disability</span>, and <span>Depressive Symptoms</span>: <span>Longitudinal Results From</span> the <span>Health</span> and <span>Retirement Study</span></a>. Annals of Epidemiology. 2010 Nov;20(11):856–61.
+<div id="ref-ecob1996" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2307/2983469">Ecob, R., 1996. Journal of the Royal Statistical Society. Series A (Statistics in Society) 159, 61.</a>
 </div>
-<div id="ref-hong2008" class="csl-entry" role="doc-biblioentry">
-Hong G, Raudenbush SW. <a href="https://doi.org/10.3102/1076998607307355">Causal <span>Inference</span> for <span>Time-Varying Instructional Treatments</span></a>. Journal of Educational and Behavioral Statistics. 2008 Sep;33(3):333–62.
+<div id="ref-galster2017" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.7758/RSF.2017.3.2.01">Galster, G., Sharkey, P., 2017. RSF: The Russell Sage Foundation Journal of the Social Sciences 3, 1–33.</a>
 </div>
-<div id="ref-hubbard2010" class="csl-entry" role="doc-biblioentry">
-Hubbard AE, Ahern J, Fleischer NL, Laan MVD, Lippman SA, Jewell N, et al. <a href="https://doi.org/10.1097/EDE.0b013e3181caeb90">To <span>GEE</span> or <span>Not</span> to <span>GEE</span>: <span>Comparing Population Average</span> and <span>Mixed Models</span> for <span>Estimating</span> the <span>Associations Between Neighborhood Risk Factors</span> and <span>Health</span></a>. Epidemiology. 2010 Jul;21(4):467–74.
+<div id="ref-glymour2010" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1016/j.annepidem.2010.08.003">Glymour, M.M., Mujahid, M., Wu, Q., White, K., Tchetgen Tchetgen, E.J., 2010. Annals of Epidemiology 20, 856–861.</a>
 </div>
-<div id="ref-kaplan1996" class="csl-entry" role="doc-biblioentry">
-Kaplan GA, Pamuk ER, Lynch JW, Cohen RD, Balfour JL. <a href="https://doi.org/10.1136/bmj.312.7037.999">Inequality in income and mortality in the <span>United States</span>: Analysis of mortality and potential pathways</a>. BMJ. 1996 Apr;312(7037):999–1003.
+<div id="ref-hong2008" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.3102/1076998607307355">Hong, G., Raudenbush, S.W., 2008. Journal of Educational and Behavioral Statistics 33, 333–362.</a>
 </div>
-<div id="ref-kennedy1996" class="csl-entry" role="doc-biblioentry">
-Kennedy BP, Kawachi I, Prothrow-Stith D. <a href="https://doi.org/10.1136/bmj.312.7037.1004">Income distribution and mortality: Cross sectional ecological study of the <span>Robin Hood</span> index in the <span>United States</span></a>. BMJ. 1996 Apr;312(7037):1004–7.
+<div id="ref-hubbard2010" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/EDE.0b013e3181caeb90">Hubbard, A.E., Ahern, J., Fleischer, N.L., Laan, M.V.D., Lippman, S.A., Jewell, N., Bruckner, T., Satariano, W.A., 2010. Epidemiology 21, 467–474.</a>
 </div>
-<div id="ref-krieger1994" class="csl-entry" role="doc-biblioentry">
-Krieger N. <a href="https://doi.org/10.1016/0277-9536(94)90202-X">Epidemiology and the web of causation: <span>Has</span> anyone seen the spider?</a> Social Science &amp; Medicine. 1994 Oct;39(7):887–903.
+<div id="ref-kaplan1996" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/bmj.312.7037.999">Kaplan, G.A., Pamuk, E.R., Lynch, J.W., Cohen, R.D., Balfour, J.L., 1996. BMJ 312, 999–1003.</a>
 </div>
-<div id="ref-lynch2004" class="csl-entry" role="doc-biblioentry">
-Lynch J, Smith GD, Harper S, Hillemeier M, Ross N, Kaplan GA, et al. <a href="https://doi.org/10.1111/j.0887-378x.2004.00302.x">Is income inequality a determinant of population health? <span>Part</span> 1. <span>A</span> systematic review</a>. The Milbank Quarterly. 2004;82(1):5–99.
+<div id="ref-kennedy1996" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/bmj.312.7037.1004">Kennedy, B.P., Kawachi, I., Prothrow-Stith, D., 1996. BMJ 312, 1004–1007.</a>
 </div>
-<div id="ref-mackenbach2002" class="csl-entry" role="doc-biblioentry">
-Mackenbach JP. <a href="https://doi.org/10.1136/bmj.324.7328.1">Income inequality and population health</a>. BMJ. 2002 Jan;324(7328):1–2.
+<div id="ref-krieger1994" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1016/0277-9536(94)90202-X">Krieger, N., 1994. Social Science &amp; Medicine 39, 887–903.</a>
 </div>
-<div id="ref-mellor2003" class="csl-entry" role="doc-biblioentry">
-Mellor JM, Milyo J. <a href="https://doi.org/10.1111/1475-6773.00109">Is <span>Exposure</span> to <span>Income Inequality</span> a <span>Public Health Concern</span>? <span>Lagged Effects</span> of <span>Income Inequality</span> on <span>Individual</span> and <span>Population Health</span></a>. Health Services Research. 2003 Feb;38(1p1):137–51.
+<div id="ref-ludwig2008" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1086/588741">Ludwig, J., Liebman, J.B., Kling, J.R., Duncan, G.J., Katz, L.F., Kessler, R.C., Sanbonmatsu, L., 2008. American Journal of Sociology 114, 144–188.</a>
 </div>
-<div id="ref-merlo2003" class="csl-entry" role="doc-biblioentry">
-Merlo J. <a href="https://doi.org/10.1136/jech.57.8.550">Multilevel analytical approaches in social epidemiology: Measures of health variation compared with traditional measures of association</a>. Journal of Epidemiology &amp; Community Health. 2003 Aug;57(8):550–2.
+<div id="ref-lynch2004" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1111/j.0887-378x.2004.00302.x">Lynch, J., Smith, G.D., Harper, S., Hillemeier, M., Ross, N., Kaplan, G.A., Wolfson, M., 2004. Milbank Q 82, 5–99.</a>
 </div>
-<div id="ref-merlo2005a" class="csl-entry" role="doc-biblioentry">
-Merlo J. <a href="https://doi.org/10.1136/jech.2004.023473">A brief conceptual tutorial of multilevel analysis in social epidemiology: Linking the statistical concept of clustering to the idea of contextual phenomenon</a>. Journal of Epidemiology &amp; Community Health. 2005 Jun a;59(6):443–9.
+<div id="ref-mackenbach2002" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/bmj.324.7328.1">Mackenbach, J.P., 2002. BMJ 324, 1–2.</a>
 </div>
-<div id="ref-merlo2005" class="csl-entry" role="doc-biblioentry">
-Merlo J. <a href="https://doi.org/10.1136/jech.2004.028035">A brief conceptual tutorial on multilevel analysis in social epidemiology: Interpreting neighbourhood differences and the effect of neighbourhood characteristics on individual health</a>. Journal of Epidemiology &amp; Community Health. 2005 Dec b;59(12):1022–9.
+<div id="ref-mellor2003" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1111/1475-6773.00109">Mellor, J.M., Milyo, J., 2003. Health Serv Res 38, 137–151.</a>
 </div>
-<div id="ref-merlo2006" class="csl-entry" role="doc-biblioentry">
-Merlo J. <a href="https://doi.org/10.1136/jech.2004.029454">A brief conceptual tutorial of multilevel analysis in social epidemiology: Using measures of clustering in multilevel logistic regression to investigate contextual phenomena</a>. Journal of Epidemiology &amp; Community Health. 2006 Apr;60(4):290–7.
+<div id="ref-merlo2003" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/jech.57.8.550">Merlo, J., 2003. Journal of Epidemiology &amp; Community Health 57, 550–552.</a>
 </div>
-<div id="ref-moyer2019" class="csl-entry" role="doc-biblioentry">
-Moyer R, MacDonald JM, Ridgeway G, Branas CC. <a href="https://doi.org/10.2105/AJPH.2018.304752">Effect of <span>Remediating Blighted Vacant Land</span> on <span>Shootings</span>: <span>A Citywide Cluster Randomized Trial</span></a>. American Journal of Public Health. 2019 Jan;109(1):140–4.
+<div id="ref-merlo2005" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/jech.2004.028035">Merlo, J., 2005a. Journal of Epidemiology &amp; Community Health 59, 1022–1029.</a>
 </div>
-<div id="ref-nandi2011" class="csl-entry" role="doc-biblioentry">
-Nandi A, Kawachi I. <a href="https://doi.org/10.1007/978-90-481-9996-9_20">Neighborhood <span>Effects</span> on <span>Mortality</span></a>. In: Rogers RG, Crimmins EM, editors. International <span>Handbook</span> of <span>Adult Mortality</span>. <span>Dordrecht</span>: <span>Springer Netherlands</span>; 2011. p. 413–39.
+<div id="ref-merlo2005a" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/jech.2004.023473">Merlo, J., 2005b. Journal of Epidemiology &amp; Community Health 59, 443–449.</a>
 </div>
-<div id="ref-ocampo1995" class="csl-entry" role="doc-biblioentry">
-O’Campo P, Gielen AC, Faden RR, Xue X, Kass N, Wang MC. <a href="https://doi.org/10.2105/AJPH.85.8_Pt_1.1092">Violence by male partners against women during the childbearing year: A contextual analysis.</a> American Journal of Public Health. 1995 Aug;85(8_Pt_1):1092–7.
+<div id="ref-merlo2006" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/jech.2004.029454">Merlo, J., 2006. Journal of Epidemiology &amp; Community Health 60, 290–297.</a>
 </div>
-<div id="ref-ocampo1997" class="csl-entry" role="doc-biblioentry">
-O’Campo P, Xue X, Wang MC, Caughy M. <a href="https://doi.org/10.2105/AJPH.87.7.1113">Neighborhood risk factors for low birthweight in <span>Baltimore</span>: A multilevel analysis.</a> American Journal of Public Health. 1997 Jul;87(7):1113–8.
+<div id="ref-moyer2019" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.2018.304752">Moyer, R., MacDonald, J.M., Ridgeway, G., Branas, C.C., 2019. Am J Public Health 109, 140–144.</a>
 </div>
-<div id="ref-oakes2004" class="csl-entry" role="doc-biblioentry">
-Oakes JM. <a href="https://doi.org/10.1016/j.socscimed.2003.08.004">The (mis)estimation of neighborhood effects: Causal inference for a practicable social epidemiology</a>. Social Science &amp; Medicine. 2004 May;58(10):1929–52.
+<div id="ref-nandi2011" class="csl-entry" role="listitem">
+Nandi, A., Kawachi, I., 2011. <a href="https://doi.org/10.1007/978-90-481-9996-9_20">Neighborhood <span>Effects</span> on <span>Mortality</span></a>, in: Rogers, R.G., Crimmins, E.M. (Eds.), International <span>Handbook</span> of <span>Adult Mortality</span>. Springer Netherlands, Dordrecht, pp. 413–439.
 </div>
-<div id="ref-oakes2015" class="csl-entry" role="doc-biblioentry">
-Oakes JM, Andrade KE, Biyoow IM, Cowan LT. <a href="https://doi.org/10.1007/s40471-015-0035-7">Twenty <span>Years</span> of <span>Neighborhood Effect Research</span>: <span>An Assessment</span></a>. Current Epidemiology Reports. 2015 Mar;2(1):80–7.
+<div id="ref-ocampo1995" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.85.8_Pt_1.1092">O’Campo, P., Gielen, A.C., Faden, R.R., Xue, X., Kass, N., Wang, M.C., 1995. Am J Public Health 85, 1092–1097.</a>
 </div>
-<div id="ref-pearce1996" class="csl-entry" role="doc-biblioentry">
-Pearce N. <a href="https://doi.org/10.2105/AJPH.86.5.678">Traditional epidemiology, modern epidemiology, and public health.</a> American Journal of Public Health. 1996 May;86(5):678–83.
+<div id="ref-ocampo1997" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.87.7.1113">O’Campo, P., Xue, X., Wang, M.C., Caughy, M., 1997. Am J Public Health 87, 1113–1118.</a>
 </div>
-<div id="ref-pickett2001" class="csl-entry" role="doc-biblioentry">
-Pickett KE. <a href="https://doi.org/10.1136/jech.55.2.111">Multilevel analyses of neighbourhood socioeconomic context and health outcomes: A critical review</a>. Journal of Epidemiology &amp; Community Health. 2001 Feb;55(2):111–22.
+<div id="ref-oakes2004" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1016/j.socscimed.2003.08.004">Oakes, J.M., 2004. Social Science &amp; Medicine 58, 1929–1952.</a>
 </div>
-<div id="ref-riva2007" class="csl-entry" role="doc-biblioentry">
-Riva M, Gauvin L, Barnett TA. <a href="https://doi.org/10.1136/jech.2006.050740">Toward the next generation of research into small area effects on health: A synthesis of multilevel investigations published since <span>July</span> 1998</a>. Journal of Epidemiology &amp; Community Health. 2007 Oct;61(10):853–61.
+<div id="ref-oakes2015" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1007/s40471-015-0035-7">Oakes, J.M., Andrade, K.E., Biyoow, I.M., Cowan, L.T., 2015. Curr Epidemiol Rep 2, 80–87.</a>
 </div>
-<div id="ref-sampson1997" class="csl-entry" role="doc-biblioentry">
-Sampson RJ, Raudenbush SW, Earls F. <a href="https://doi.org/10.1126/science.277.5328.918">Neighborhoods and <span>Violent Crime</span>: <span>A Multilevel Study</span> of <span>Collective Efficacy</span></a>. Science. 1997;277(5328):918–24.
+<div id="ref-pearce1996" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.86.5.678">Pearce, N., 1996. Am J Public Health 86, 678–683.</a>
 </div>
-<div id="ref-sampson2008" class="csl-entry" role="doc-biblioentry">
-Sampson RJ, Sharkey P, Raudenbush SW. <a href="https://doi.org/10.1073/pnas.0710189104">Durable effects of concentrated disadvantage on verbal ability among <span>African-American</span> children</a>. Proceedings of the National Academy of Sciences. 2008 Jan;105(3):845–52.
+<div id="ref-pickett2001" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/jech.55.2.111">Pickett, K.E., 2001. Journal of Epidemiology &amp; Community Health 55, 111–122.</a>
 </div>
-<div id="ref-schwartz1994" class="csl-entry" role="doc-biblioentry">
-Schwartz S. <a href="https://doi.org/10.2105/AJPH.84.5.819">The fallacy of the ecological fallacy: The potential misuse of a concept and the consequences.</a> American Journal of Public Health. 1994 May;84(5):819–24.
+<div id="ref-riva2007" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1136/jech.2006.050740">Riva, M., Gauvin, L., Barnett, T.A., 2007. Journal of Epidemiology &amp; Community Health 61, 853–861.</a>
 </div>
-<div id="ref-south2023" class="csl-entry" role="doc-biblioentry">
-South EC, MacDonald JM, Tam VW, Ridgeway G, Branas CC. <a href="https://doi.org/10.1001/jamainternmed.2022.5460">Effect of <span>Abandoned Housing Interventions</span> on <span>Gun Violence</span>, <span>Perceptions</span> of <span>Safety</span>, and <span>Substance Use</span> in <span>Black Neighborhoods</span>: <span>A Citywide Cluster Randomized Trial</span></a>. JAMA Internal Medicine. 2023 Jan;183(1):31–9.
+<div id="ref-sampson2008a" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1086/589843">Sampson, R.J., 2008. American Journal of Sociology 114, 189–231.</a>
 </div>
-<div id="ref-subramanian2003" class="csl-entry" role="doc-biblioentry">
-Subramanian SV, Blakely T, Kawachi I. <a href="https://doi.org/10.1111/1475-6773.00110">Income <span>Inequality</span> as a <span>Public Health Concern</span>: <span>Where Do We Stand</span>? <span>Commentary</span> on "<span>Is Exposure</span> to <span>Income Inequality</span> a <span>Public Health Concern</span>?"</a>. Health Services Research. 2003 Feb;38(1p1):153–67.
+<div id="ref-sampson1997" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1126/science.277.5328.918">Sampson, R.J., Raudenbush, S.W., Earls, F., 1997. Science 277, 918–924.</a>
 </div>
-<div id="ref-subramanian2010" class="csl-entry" role="doc-biblioentry">
-Subramanian SV, O’Malley AJ. <a href="https://doi.org/10.1097/EDE.0b013e3181d74a71">Modeling <span>Neighborhood Effects</span>: <span>The Futility</span> of <span>Comparing Mixed</span> and <span>Marginal Approaches</span></a>. Epidemiology. 2010 Jul;21(4):475–8.
+<div id="ref-sampson2008" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1073/pnas.0710189104">Sampson, R.J., Sharkey, P., Raudenbush, S.W., 2008. Proc. Natl. Acad. Sci. U.S.A. 105, 845–852.</a>
 </div>
-<div id="ref-susser1996a" class="csl-entry" role="doc-biblioentry">
-Susser M, Susser E. <a href="https://doi.org/10.2105/AJPH.86.5.674">Choosing a future for epidemiology: <span>II</span>. <span>From</span> black box to <span>Chinese</span> boxes and eco-epidemiology.</a> American Journal of Public Health. 1996 May;86(5):674–7.
+<div id="ref-schwartz1994" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.84.5.819">Schwartz, S., 1994. Am J Public Health 84, 819–824.</a>
 </div>
-<div id="ref-vonkorff1992" class="csl-entry" role="doc-biblioentry">
-Von Korff M, Koepsell T, Curry S, Diehr P. <a href="https://doi.org/10.1093/oxfordjournals.aje.a116207">Multi-level <span>Analysis</span> in <span>Epidemiologic Research</span> on <span>Health Behaviors</span> and <span>Outcomes</span></a>. American Journal of Epidemiology. 1992 May;135(10):1077–82.
+<div id="ref-south2023" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1001/jamainternmed.2022.5460">South, E.C., MacDonald, J.M., Tam, V.W., Ridgeway, G., Branas, C.C., 2023. JAMA Internal Medicine 183, 31–39.</a>
+</div>
+<div id="ref-subramanian2003" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1111/1475-6773.00110">Subramanian, S.V., Blakely, T., Kawachi, I., 2003. Health Serv Res 38, 153–167.</a>
+</div>
+<div id="ref-subramanian2010" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1097/EDE.0b013e3181d74a71">Subramanian, S.V., O’Malley, A.J., 2010. Epidemiology 21, 475–478.</a>
+</div>
+<div id="ref-susser1996a" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.2105/AJPH.86.5.674">Susser, M., Susser, E., 1996. Am J Public Health 86, 674–677.</a>
+</div>
+<div id="ref-vonkorff1992" class="csl-entry" role="listitem">
+<a href="https://doi.org/10.1093/oxfordjournals.aje.a116207">Von Korff, M., Koepsell, T., Curry, S., Diehr, P., 1992. American Journal of Epidemiology 135, 1077–1082.</a>
 </div>
 </div>
 </section>
@@ -978,12 +1005,11 @@ Von Korff M, Koepsell T, Curry S, Diehr P. <a href="https://doi.org/10.1093/oxfo
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1187,12 +1213,15 @@ Von Korff M, Koepsell T, Curry S, Diehr P. <a href="https://doi.org/10.1093/oxfo
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
         }
-      });
-      clipboard.on('success', function(e) {
+        return false;
+      }
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1224,11 +1253,50 @@ Von Korff M, Koepsell T, Curry S, Diehr P. <a href="https://doi.org/10.1093/oxfo
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1237,9 +1305,18 @@ Von Korff M, Koepsell T, Curry S, Diehr P. <a href="https://doi.org/10.1093/oxfo
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
-          placement: 'bottom-start'
+          theme: 'light-border',
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1253,7 +1330,11 @@ Von Korff M, Koepsell T, Curry S, Diehr P. <a href="https://doi.org/10.1093/oxfo
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
